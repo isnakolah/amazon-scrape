@@ -18,6 +18,8 @@ def check_price():
 
     if converted_price < 11000:
         send_mail()
+    else:
+        print('PRICE HAS NOT CHANGED')
 
 
 def send_mail():
@@ -44,5 +46,9 @@ def send_mail():
 
 if __name__ == "__main__":
     while True:
-        check_price()
-        time.sleep(60*60)
+        try:
+            check_price()
+            time.sleep(60*60)
+        except KeyboardInterrupt:
+            print(' pressed, exiting...')
+            break
