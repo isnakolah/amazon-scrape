@@ -16,7 +16,7 @@ def check_price():
     price = soup.find('span', {'class': '-tal'}).get_text()
     converted_price = float(''.join(price.split(' ')[1].split(',')))
 
-    if converted_price < 13000:
+    if converted_price < 11000:
         send_mail()
 
 
@@ -38,7 +38,7 @@ def send_mail():
         'nakolahdaniel1@gmail.com',
         msg
     )
-    print('HEY EMAIL HAS BEEN SENT')
+    print('HEY! EMAIL HAS BEEN SENT')
     server.quit()
 
 
