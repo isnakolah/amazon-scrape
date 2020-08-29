@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import smtplib
+import time
 
 URL = 'https://www.jumia.co.ke/samsung-galaxy-a10s-6.2-4g-32gb-2gb-dual-sim-blue.-22893932.html'
 
@@ -14,5 +16,33 @@ def check_price():
     price = soup.find('span', {'class': '-tal'}).get_text()
     converted_price = float(''.join(price.split(' ')[1].split(',')))
 
-    if converted_price < 12000:
+    if converted_price < 13000:
         send_mail()
+
+
+def send_mail():
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+
+    server.login('nakolahdaniel1@gmail.com', 'jltxloxagtmqoqmh')
+
+    subject = 'Price fell down!'
+    body = f'Check the Jumia link {URL}'
+
+    msg = f'Subject: {subject}\n\n{body}'
+
+    server.sendmail(
+        'nakolahdaniel1@gmail.com',
+        'nakolahdaniel1@gmail.com',
+        msg
+    )
+    print('HEY EMAIL HAS BEEN SENT')
+    server.quit()
+
+
+if __name__ == "__main__":
+    while True:
+        check_price()
+        time.sleep(60*60)
