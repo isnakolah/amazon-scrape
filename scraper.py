@@ -19,7 +19,7 @@ def check_price():
     if converted_price < 11000:
         send_mail()
     else:
-        print('PRICE HAS NOT CHANGED')
+        print(f'PRICE HAS NOT CHANGED, ITS STILL {price}')
 
 
 def send_mail():
