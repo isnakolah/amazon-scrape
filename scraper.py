@@ -16,7 +16,7 @@ def check_price():
     price = soup.find('span', {'class': '-tal'}).get_text()
     converted_price = float(''.join(price.split(' ')[1].split(',')))
 
-    if converted_price < 11000:
+    if converted_price < 10000:
         send_mail()
     else:
         print(f'PRICE HAS NOT CHANGED, ITS STILL {price}')
