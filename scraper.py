@@ -17,7 +17,7 @@ def check_price():
     converted_price = float(''.join(price.split(' ')[1].split(',')))
 
     if converted_price < 10020:
-        send_mail()
+        send_mail() 
     else:
         print(f'PRICE HAS NOT CHANGED, ITS STILL {price}')
 
